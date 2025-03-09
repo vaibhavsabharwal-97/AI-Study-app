@@ -5,6 +5,8 @@ import { useUser } from '@clerk/nextjs'
 import axios from 'axios';
 import { eq } from 'drizzle-orm';
 import React, { useEffect } from 'react'
+import AnimationProvider from './AnimationProvider';
+import CourseCountProvider from './_context/CourseCountProvider';
 
 function Provider({ children }) {
 
@@ -36,9 +38,11 @@ function Provider({ children }) {
     }
 
     return (
-        <div>
-            {children}
-        </div>
+        <AnimationProvider>
+            <CourseCountProvider>
+                {children}
+            </CourseCountProvider>
+        </AnimationProvider>
     )
 }
 
